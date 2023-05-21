@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace CU44.Clases_de_Entidad
 {
-
     public class Encuesta
     {
         private string descripcion;
@@ -30,10 +29,10 @@ namespace CU44.Clases_de_Entidad
             return (fechaActual < fechaFinVigencia);
         }
 
-        public string armarEncuesta() 
-        {
-            return "a"; //no supe como implementarlo
-        }
+        //public string armarEncuesta() 
+        //{
+        //    return "a"; //no supe como implementarlo
+        //}
 
         public string getDescripcionEncuesta 
         {
