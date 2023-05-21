@@ -30,31 +30,34 @@ namespace CU44
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaConsultarEncuesta));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtFechaInicio = new System.Windows.Forms.TextBox();
+            this.txtFechaFin = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgLlamadas = new System.Windows.Forms.DataGridView();
+            this.btnIngresarPeriodo = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgLlamadas)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtFechaInicio
             // 
-            this.textBox1.Location = new System.Drawing.Point(143, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "DD/MM/YYYY";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 0;
+            this.txtFechaInicio.Location = new System.Drawing.Point(143, 61);
+            this.txtFechaInicio.Name = "txtFechaInicio";
+            this.txtFechaInicio.PlaceholderText = "DD/MM/YYYY";
+            this.txtFechaInicio.Size = new System.Drawing.Size(100, 23);
+            this.txtFechaInicio.TabIndex = 0;
+            this.txtFechaInicio.TextChanged += new System.EventHandler(this.validarFecha);
+            this.txtFechaInicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validarDatosFecha);
             // 
-            // textBox2
+            // txtFechaFin
             // 
-            this.textBox2.Location = new System.Drawing.Point(401, 61);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "DD/MM/YYYY";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 1;
+            this.txtFechaFin.Location = new System.Drawing.Point(401, 61);
+            this.txtFechaFin.Name = "txtFechaFin";
+            this.txtFechaFin.PlaceholderText = "DD/MM/YYYY";
+            this.txtFechaFin.Size = new System.Drawing.Size(100, 23);
+            this.txtFechaFin.TabIndex = 1;
+            this.txtFechaFin.TextChanged += new System.EventHandler(this.validarFecha);
+            this.txtFechaFin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validarDatosFecha);
             // 
             // label1
             // 
@@ -74,52 +77,44 @@ namespace CU44
             this.label2.TabIndex = 3;
             this.label2.Text = "Fecha Fin: ";
             // 
-            // dataGridView1
+            // dgLlamadas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(64, 105);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(918, 373);
-            this.dataGridView1.TabIndex = 4;
+            this.dgLlamadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgLlamadas.Location = new System.Drawing.Point(64, 105);
+            this.dgLlamadas.Name = "dgLlamadas";
+            this.dgLlamadas.RowTemplate.Height = 25;
+            this.dgLlamadas.Size = new System.Drawing.Size(918, 427);
+            this.dgLlamadas.TabIndex = 4;
             // 
-            // button1
+            // btnIngresarPeriodo
             // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(584, 61);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(195, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnIngresarPeriodo.Location = new System.Drawing.Point(584, 61);
+            this.btnIngresarPeriodo.Name = "btnIngresarPeriodo";
+            this.btnIngresarPeriodo.Size = new System.Drawing.Size(195, 23);
+            this.btnIngresarPeriodo.TabIndex = 6;
+            this.btnIngresarPeriodo.Text = "Filtrar Por Periodo";
+            this.btnIngresarPeriodo.UseVisualStyleBackColor = true;
+            this.btnIngresarPeriodo.Click += new System.EventHandler(this.btnIngresarPeriodo_Click);
             // 
             // PantallaConsultarEncuesta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 490);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1086, 544);
+            this.Controls.Add(this.btnIngresarPeriodo);
+            this.Controls.Add(this.dgLlamadas);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFechaFin);
+            this.Controls.Add(this.txtFechaInicio);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PantallaConsultarEncuesta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar   Encuesta";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgLlamadas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,12 +122,11 @@ namespace CU44
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtFechaInicio;
+        private System.Windows.Forms.TextBox txtFechaFin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dgLlamadas;
+        private System.Windows.Forms.Button btnIngresarPeriodo;
     }
 }
