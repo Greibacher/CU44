@@ -16,20 +16,24 @@ namespace CU44.Clases_de_Entidad
             this.descripcion = descr;
             this.valor = val;
         }
-
-        public string getDescripcionRta
-         {
-            get => descripcion;
-            set => descripcion = value;
-        }
-
-        public string getValorRta
+        public string getValor()
         {
-            get => valor;
-            set => valor = value;
+            return valor;
+        }
+        public void setValor(string valor)
+        {
+            this.valor = valor;
         }
 
+        public string getDescripcion()
+        {
+            return descripcion;
+        }
 
+        public void setDescripcion(string desc)
+        {
+            descripcion = desc;
+        }
     }
 
 }

@@ -8,7 +8,6 @@ namespace CU44.Clases_de_Entidad
 {
     public class RespuestaDeCliente
     {
-
         private DateTime fechaEncuesta;
         private RespuestaPosible respuestaSeleccionada;
 
@@ -18,16 +17,16 @@ namespace CU44.Clases_de_Entidad
             this.respuestaSeleccionada = respuesta;
 
         }
-        public DateTime GetFechaEncuesta
+        public DateTime FechaEncuesta
         {
             get => fechaEncuesta;
             set => fechaEncuesta = value;
         }
 
-        public string getDescripcionRta
+        public string DescripcionRta
         {
-            get => (respuestaSeleccionada.getDescripcionRta);
-            set => (respuestaSeleccionada.getDescripcionRta) = value;
+            get => respuestaSeleccionada.getDescripcion();
+            set => respuestaSeleccionada.setDescripcion(value);
         }
      }
 }

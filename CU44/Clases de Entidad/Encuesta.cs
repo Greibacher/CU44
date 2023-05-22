@@ -10,31 +10,31 @@ namespace CU44.Clases_de_Entidad
     {
         private string descripcion;
         private DateTime fechaFinVigencia;
-        private List<Pregunta> pregunta;
+        private List<Pregunta> preguntas;
 
         public Encuesta(string desc, DateTime fechaFin) 
         {
             this.descripcion = desc;
             this.fechaFinVigencia = fechaFin;
-            this.pregunta = new List<Pregunta>();
+            this.preguntas = new List<Pregunta>();
         }
 
         public void agregarPregunta(Pregunta nuevaPregunta) 
         {
-            pregunta.Add(nuevaPregunta);
+            preguntas.Add(nuevaPregunta);
         }
 
         public bool esVigente(DateTime fechaActual) 
         {
-            return (fechaActual < fechaFinVigencia);
+            return (fechaActual.CompareTo(fechaFinVigencia) > 0);
         }
 
-        //public string armarEncuesta() 
-        //{
-        //    return "a"; //no supe como implementarlo
-        //}
+        public string armarEncuesta() 
+        {
+            return "a"; //no supe como implementarlo
+        }
 
-        public string getDescripcionEncuesta 
+        public string DescripcionEncuesta 
         {
             get => descripcion;
             set => descripcion = value;

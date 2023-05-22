@@ -6,9 +6,4 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Clases de Entidad\" />
-    <Folder Include="Controlador\" />
-  </ItemGroup>
-
 </Project>

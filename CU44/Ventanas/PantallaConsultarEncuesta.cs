@@ -1,4 +1,6 @@
-﻿using CU44.Clases_de_Soporte;
+﻿using CU44.Clases_de_Entidad;
+using CU44.Clases_de_Soporte;
+using CU44.Controlador;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,13 +12,15 @@ namespace CU44
     {
         DateTime fechaInicio;
         DateTime fechaFin;
+
+        ControladorConsultarEncuesta controlador = new ControladorConsultarEncuesta();
         public PantallaConsultarEncuesta()
         {
             InitializeComponent();
         }
         private void validarDatosFecha(object sender, KeyPressEventArgs e)
         {
-            ValidadorEntradas.SoloNumeros(e);
+            ValidadorEntradas.ParaFechas(e);
         }
 
 

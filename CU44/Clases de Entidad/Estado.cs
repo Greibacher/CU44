@@ -24,10 +24,14 @@ namespace CU44.Clases_de_Entidad
             return (nombre == "Iniciada");
         }
 
-        public string getNombre 
+        public string getNombre()
         {
-            get => nombre;
-            set => nombre = value;
+            return nombre;
+        }
+
+        public void setNombre(string nombre)
+        {
+            this.nombre = nombre;
         }
 
 

@@ -18,22 +18,31 @@ namespace CU44.Clases_de_Entidad
             this.estado = estado;
         }
 
-        public DateTime getFechaHoraInicio
+        public DateTime getFechaHoraInicio()
         {
-            get => fechaHoraInicio;
-            set => fechaHoraInicio = value;
-        }
-        public DateTime? getFechaHoraFin
-        {
-            get => fechaHoraFin;
-            set => fechaHoraFin = value;
+            return fechaHoraInicio;
         }
 
-        public string getNombreEstado
+        public void setFechaHoraInicio(DateTime fechaInicio)
         {
-            get => (estado.getNombre);
-            set => (estado.getNombre) = value;
+            this.fechaHoraInicio = fechaInicio;
         }
+        public DateTime getFechaHoraFin()
+        {
+            if (fechaHoraFin is null) { return default; }
+            return (DateTime)fechaHoraFin;
+        }
+
+        public void setFechaHoraFin(DateTime fechaFin)
+        {
+            this.fechaHoraFin = fechaFin;
+        }
+        public string getNombreEstado()
+        {
+            return estado.getNombre();
+        }
+
+
         public bool esEstadoInicial()
         {
             return estado.esIniciada();
@@ -49,5 +58,7 @@ namespace CU44.Clases_de_Entidad
         {
             return (fechaHoraFin != null);
         }
+
+
     }
 }

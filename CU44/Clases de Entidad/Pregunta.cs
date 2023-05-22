@@ -9,25 +9,25 @@ namespace CU44.Clases_de_Entidad
     public class Pregunta
     {
         private string pregunta;
-        private List<RespuestaPosible> respuesta;
+        private List<RespuestaPosible> posiblesRespuestas;
         public Pregunta(string preg) 
         { 
             this.pregunta = preg;
-            this.respuesta = new List<RespuestaPosible>();
+            this.posiblesRespuestas = new List<RespuestaPosible>();
         }
 
         public void agregarRespuesta(RespuestaPosible rta)
         {
-            respuesta.Add(rta);
+            if(!posiblesRespuestas.Contains(rta))posiblesRespuestas.Add(rta);
         }
 
         public string ListarRespuestasPosibles()
         {
             StringBuilder cadena = new StringBuilder();
 
-            foreach (RespuestaPosible respuestaInd in respuesta)
+            foreach (RespuestaPosible respuestaInd in posiblesRespuestas)
             {
-                cadena.AppendLine(respuestaInd.getValorRta);
+                cadena.AppendLine(respuestaInd.getValor());
             }
 
             return cadena.ToString();
