@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CU44.Clases_de_Entidad
 {
@@ -36,10 +37,26 @@ namespace CU44.Clases_de_Entidad
             
         }
 
+        public string getNombreCliente() 
+        {
+            return cliente.getNombreCompleto();
+        }
+
         public void agregarRespuestaDeCliente(RespuestaDeCliente respuestaDeCliente) 
         {
             respuestasDeClientes.Add(respuestaDeCliente);
         }
+
+        public DateTime getFechaInicio()
+        {
+            return buscarCambioEstadoInicial().getFechaHoraInicio();
+        }
+
+        public DateTime getFechaFin()
+        {
+            return buscarCambioEstadoFinal().getFechaHoraInicio();
+        }
+
 
         public CambioEstado buscarCambioEstadoInicial()
         {

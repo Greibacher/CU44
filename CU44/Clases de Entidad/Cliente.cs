@@ -20,6 +20,17 @@ namespace CU44.Clases_de_Entidad
             this.nroCelular = nroCelular;
         }
 
+        public string getNombreCompleto()
+        {
+            return nombreCompleto;
+        }
+
+        public static List<Cliente> traerTodosLosClientes()
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            return clientes;
+        }
+
         public bool esCliente(int dniVer)
         {
             return (dni == dniVer);

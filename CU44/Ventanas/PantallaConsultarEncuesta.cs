@@ -3,6 +3,7 @@ using CU44.Clases_de_Soporte;
 using CU44.Controlador;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -12,18 +13,15 @@ namespace CU44
     {
         DateTime fechaInicio;
         DateTime fechaFin;
-        
 
 
-        ControladorConsultarEncuesta controlador = new ControladorConsultarEncuesta();
+
+        ControladorConsultarEncuesta controlador;
+
         public PantallaConsultarEncuesta()
         {
             InitializeComponent();
-
-            dgLlamadas.Columns.Add("Duracion", "Duracion");
-            dgLlamadas.Columns.Add("Cliente", "Cliente");
-            dgLlamadas.Columns.Add("Fecha Inicio", "Fecha Inicio");
-            dgLlamadas.Columns.Add("Fecha Fin", "Fecha Fin");
+            controlador = new ControladorConsultarEncuesta(this);
         }
         private void dgLlamadas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -38,13 +36,36 @@ namespace CU44
         private void btnIngresarPeriodo_Click(object sender, EventArgs e)
         {
             //tomo las fechas de los datatimepicker
-            List<Llamada> listaLlamadas= controlador.tomarDatosPeriodoLlamada(fechaInicioPer.Value, fechaFinPer.Value);
-            foreach (Llamada llamada in listaLlamadas)
-            {
-                //no le pone la duracion a la columna, no se por que, no se si esta funcionando aunque sea, no se si toma algun objeto, como se eso AYUDA
-                DataGridViewRow fila = new DataGridViewRow();
-                fila.CreateCells(dgLlamadas, llamada.getDuracion);
-            }
+            List<Llamada> listaLlamadas = controlador.tomarDatosPeriodoLlamada(fechaInicioPer.Value, fechaFinPer.Value);
+            dgLlamadas.DataSource = controlador.llamadasToDataTable(listaLlamadas);
+        }
+
+        public void pedirSeleccionLlamada()
+        {
+            List<Llamada> llamadas = controlador.getLlamadasRespondidas();
+            DataTable dtLlamadas = controlador.llamadasToDataTable(llamadas);
+            dgLlamadas.DataSource = dtLlamadas;
+        }
+
+        private void PantallaConsultarEncuesta_Load(object sender, EventArgs e)
+        {
+            List<Llamada> llamadas = controlador.getLlamadas();
+            DataTable dtLlamadas = controlador.llamadasToDataTable(llamadas);
+            dgLlamadas.DataSource = dtLlamadas;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void seleccionarLlamada(object sender, DataGridViewCellEventArgs e)
+        {
+            int indice = 0;
+            controlador.seleccionarLlamada(indice);
+            Encuesta encuesta = controlador.getEncuestaLlamada();
+            DataTable dtEncuesta = controlador.encuestasToDataTable(encuesta);
+            dgEncuesta.DataSource = dtEncuesta;
         }
     }
 }

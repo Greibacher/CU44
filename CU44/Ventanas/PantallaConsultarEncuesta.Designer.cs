@@ -34,11 +34,11 @@ namespace CU44
             label2 = new System.Windows.Forms.Label();
             dgLlamadas = new System.Windows.Forms.DataGridView();
             btnIngresarPeriodo = new System.Windows.Forms.Button();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
+            dgEncuesta = new System.Windows.Forms.DataGridView();
             fechaInicioPer = new System.Windows.Forms.DateTimePicker();
             fechaFinPer = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgLlamadas).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgEncuesta).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -68,6 +68,7 @@ namespace CU44
             dgLlamadas.Size = new System.Drawing.Size(512, 352);
             dgLlamadas.TabIndex = 4;
             dgLlamadas.CellContentClick += dgLlamadas_CellContentClick;
+            dgLlamadas.CellDoubleClick += seleccionarLlamada;
             // 
             // btnIngresarPeriodo
             // 
@@ -79,14 +80,15 @@ namespace CU44
             btnIngresarPeriodo.UseVisualStyleBackColor = true;
             btnIngresarPeriodo.Click += btnIngresarPeriodo_Click;
             // 
-            // dataGridView1
+            // dgEncuesta
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(606, 118);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new System.Drawing.Size(431, 352);
-            dataGridView1.TabIndex = 7;
+            dgEncuesta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgEncuesta.Location = new System.Drawing.Point(606, 118);
+            dgEncuesta.Name = "dgEncuesta";
+            dgEncuesta.RowTemplate.Height = 25;
+            dgEncuesta.Size = new System.Drawing.Size(431, 352);
+            dgEncuesta.TabIndex = 7;
+            dgEncuesta.CellContentClick += dataGridView1_CellContentClick;
             // 
             // fechaInicioPer
             // 
@@ -111,7 +113,7 @@ namespace CU44
             ClientSize = new System.Drawing.Size(1086, 544);
             Controls.Add(fechaFinPer);
             Controls.Add(fechaInicioPer);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgEncuesta);
             Controls.Add(btnIngresarPeriodo);
             Controls.Add(dgLlamadas);
             Controls.Add(label2);
@@ -122,8 +124,9 @@ namespace CU44
             Name = "PantallaConsultarEncuesta";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Consultar   Encuesta";
+            Load += PantallaConsultarEncuesta_Load;
             ((System.ComponentModel.ISupportInitialize)dgLlamadas).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgEncuesta).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -133,7 +136,7 @@ namespace CU44
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgLlamadas;
         private System.Windows.Forms.Button btnIngresarPeriodo;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgEncuesta;
         private System.Windows.Forms.DateTimePicker fechaInicioPer;
         private System.Windows.Forms.DateTimePicker fechaFinPer;
     }

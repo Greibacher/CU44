@@ -29,6 +29,16 @@ namespace CU44.Clases_de_Entidad
             return (fechaActual.CompareTo(fechaFinVigencia) > 0);
         }
 
+        public List<Pregunta> getPreguntas()
+        {
+            return preguntas;
+        }
+
+        public DateTime getFechaVigencia()
+        {
+            return fechaFinVigencia;
+        }
+
         public string armarEncuesta() 
         {
             return "a"; //no supe como implementarlo
