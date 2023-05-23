@@ -12,81 +12,39 @@ namespace CU44
     {
         DateTime fechaInicio;
         DateTime fechaFin;
+        
+
 
         ControladorConsultarEncuesta controlador = new ControladorConsultarEncuesta();
         public PantallaConsultarEncuesta()
         {
             InitializeComponent();
+
+            dgLlamadas.Columns.Add("Duracion", "Duracion");
+            dgLlamadas.Columns.Add("Cliente", "Cliente");
+            dgLlamadas.Columns.Add("Fecha Inicio", "Fecha Inicio");
+            dgLlamadas.Columns.Add("Fecha Fin", "Fecha Fin");
         }
-        private void validarDatosFecha(object sender, KeyPressEventArgs e)
+        private void dgLlamadas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            ValidadorEntradas.ParaFechas(e);
+
         }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnIngresarPeriodo_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void validarFecha(object sender, EventArgs e)
-        {
-            TextBox t = (TextBox)sender;
-            String s = t.Text;
-            if (s.Length > 10) { s = s.Substring(0, 10); }
-            else if (s.Length == 10)
+            //tomo las fechas de los datatimepicker
+            List<Llamada> listaLlamadas= controlador.tomarDatosPeriodoLlamada(fechaInicioPer.Value, fechaFinPer.Value);
+            foreach (Llamada llamada in listaLlamadas)
             {
-                if (t.Name == "txtFechaInicio")
-                {
-                    if (FechaValida(s)) fechaInicio = convertirAFecha(s);
-                    else fechaInicio = default;
-                }
-                if (t.Name == "txtFechaFin")
-                {
-
-                    if (FechaValida(s)) fechaFin = convertirAFecha(s);
-                    else fechaFin = default;
-                }
+                //no le pone la duracion a la columna, no se por que, no se si esta funcionando aunque sea, no se si toma algun objeto, como se eso AYUDA
+                DataGridViewRow fila = new DataGridViewRow();
+                fila.CreateCells(dgLlamadas, llamada.getDuracion);
             }
-            s = AlterText(s);
-            t.Text = s;
-            t.Select(t.Text.Length, 0);
         }
-
-        private DateTime convertirAFecha(string s)
-        {
-            return DateTime.ParseExact(s, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-        }
-
-        private string AlterText(string s)
-        {
-            return s;
-        }
-
-        private Boolean FechaValida(String s) {
-            if (s.Length != 10) return false;
-            String[] datos = s.Split('/');
-            if (datos.Length != 2) return false;
-            try
-            {
-                // Validando Dias
-                int x = Convert.ToInt32(datos[0]);
-                if (x < 0 || x > 31) return false;
-                // Validando Meses
-                x = Convert.ToInt32(datos[1]);
-                if (x < 0 || x > 12) return false;
-                // Validar Años
-                x = Convert.ToInt32(datos[2]);
-                if (x < 0 || x > DateTime.Now.Year) return false;
-                DateTime.ParseExact(s, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        
     }
 }

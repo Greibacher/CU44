@@ -12,9 +12,10 @@ namespace CU44.Clases_de_Entidad
         private DateTime? fechaHoraFin;
         private Estado estado;
 
-        public CambioEstado(DateTime fechaHoraInicio, Estado estado)
+        public CambioEstado(DateTime fechaHoraInicio, DateTime? fechaHoraFin, Estado estado)
         {
             this.fechaHoraInicio = fechaHoraInicio;
+            this.fechaHoraFin = fechaHoraFin;
             this.estado = estado;
         }
 
