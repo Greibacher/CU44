@@ -13,15 +13,17 @@ namespace CU44.Clases_de_Entidad
         private List<CambioEstado> cambiosEstado;
         private List<RespuestaDeCliente> respuestasDeClientes;
         private Cliente cliente;
+        private Encuesta encuestaLlamada;
 
         
 
-        public Llamada(Cliente cliente) 
+        public Llamada(Cliente cliente, Encuesta encuesta) 
         {
         this.duracion = null;
         this.cambiosEstado = new List<CambioEstado>();
         this.respuestasDeClientes = new List<RespuestaDeCliente>();
         this.cliente = cliente;
+        this.encuestaLlamada = encuesta;
         }
 
         public static List<Llamada> traerTodasLasLlamadas()
@@ -33,8 +35,9 @@ namespace CU44.Clases_de_Entidad
         public void agregarCambioEstado(CambioEstado cambioEstado) 
         {
             cambiosEstado.Add(cambioEstado);
+            if(this.buscarCambioEstadoFinal() != default) { 
             if(this.duracion == null) { this.duracion = this.calcularDuracion();  }
-            
+            }
         }
 
         public string getNombreCliente() 
@@ -85,20 +88,17 @@ namespace CU44.Clases_de_Entidad
             return cE;
         }
 
-        public int? calcularDuracion() 
+        public int calcularDuracion() 
         {
-            CambioEstado estadoInicial = this.buscarCambioEstadoInicial();
+            CambioEstado estadoInicial = this.buscarCambioEstadoInicial();     
             CambioEstado estadoFinal = this.buscarCambioEstadoFinal();
-            if (estadoInicial != default || estadoFinal != default) {
-            //TimeSpan diferencia = estadoFinal.getFechaHoraFin().Subtract(estadoInicial.getFechaHoraInicio());
-            //int minutos = (int)diferencia.TotalMinutes;
-            return 5;
-            }
-            return null;
+            TimeSpan diferencia = estadoFinal.getFechaHoraInicio().Subtract(estadoInicial.getFechaHoraInicio());
+            int minutos = (int)diferencia.TotalMinutes;
+            return minutos;
             
         }
 
-        public Boolean esDePeriodo(DateTime fechaInicio, DateTime fechaFinal)
+        public Boolean esDePeriodo(DateTime fechaInicio, DateTime? fechaFinal)
         {
             CambioEstado inicial = buscarCambioEstadoInicial(), final = buscarCambioEstadoFinal();
             DateTime fechaHoraComienzoLlamado = inicial.getFechaHoraInicio(), fechaHoraFinLlamado = final.getFechaHoraInicio();
@@ -114,8 +114,32 @@ namespace CU44.Clases_de_Entidad
 
         public Boolean tieneRespuestas()
         {
+            return (respuestasDeClientes.Count > 0);
+        }
 
-            return true;
+        public Encuesta getEncuesta()
+        {
+            return encuestaLlamada;
+        }
+
+        public List<String> getDescripcionRespuestasDeClientes()
+        {
+            List<String> listaRta = new List<String>();
+            foreach (RespuestaDeCliente respuesta in respuestasDeClientes)
+            {
+                listaRta.Add(respuesta.DescripcionRta);
+            }
+            return listaRta;
+        }
+
+        public List<RespuestaDeCliente> getRespuestaDeClientes()
+        {
+            return respuestasDeClientes;
+        }
+
+        internal string getNombreEstadoActual()
+        {
+            return buscarCambioEstadoFinal().getNombreEstado();
         }
     }
 }

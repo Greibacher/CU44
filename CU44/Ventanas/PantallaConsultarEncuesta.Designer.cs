@@ -37,6 +37,7 @@ namespace CU44
             dgEncuesta = new System.Windows.Forms.DataGridView();
             fechaInicioPer = new System.Windows.Forms.DateTimePicker();
             fechaFinPer = new System.Windows.Forms.DateTimePicker();
+            btnImprimirCSV = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)dgLlamadas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgEncuesta).BeginInit();
             SuspendLayout();
@@ -62,6 +63,7 @@ namespace CU44
             // dgLlamadas
             // 
             dgLlamadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgLlamadas.Enabled = false;
             dgLlamadas.Location = new System.Drawing.Point(64, 118);
             dgLlamadas.Name = "dgLlamadas";
             dgLlamadas.RowTemplate.Height = 25;
@@ -105,12 +107,23 @@ namespace CU44
             fechaFinPer.Size = new System.Drawing.Size(211, 23);
             fechaFinPer.TabIndex = 9;
             // 
+            // btnImprimirCSV
+            // 
+            btnImprimirCSV.Location = new System.Drawing.Point(925, 509);
+            btnImprimirCSV.Name = "btnImprimirCSV";
+            btnImprimirCSV.Size = new System.Drawing.Size(112, 23);
+            btnImprimirCSV.TabIndex = 10;
+            btnImprimirCSV.Text = "Imprimir Encuesta";
+            btnImprimirCSV.UseVisualStyleBackColor = true;
+            btnImprimirCSV.Click += btnImprimirCSV_Click;
+            // 
             // PantallaConsultarEncuesta
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new System.Drawing.Size(1086, 544);
+            Controls.Add(btnImprimirCSV);
             Controls.Add(fechaFinPer);
             Controls.Add(fechaInicioPer);
             Controls.Add(dgEncuesta);
@@ -139,5 +152,6 @@ namespace CU44
         private System.Windows.Forms.DataGridView dgEncuesta;
         private System.Windows.Forms.DateTimePicker fechaInicioPer;
         private System.Windows.Forms.DateTimePicker fechaFinPer;
+        private System.Windows.Forms.Button btnImprimirCSV;
     }
 }

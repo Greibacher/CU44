@@ -38,6 +38,7 @@ namespace CU44
             //tomo las fechas de los datatimepicker
             List<Llamada> listaLlamadas = controlador.tomarDatosPeriodoLlamada(fechaInicioPer.Value, fechaFinPer.Value);
             dgLlamadas.DataSource = controlador.llamadasToDataTable(listaLlamadas);
+            dgLlamadas.Enabled = true;
         }
 
         public void pedirSeleccionLlamada()
@@ -61,11 +62,21 @@ namespace CU44
 
         private void seleccionarLlamada(object sender, DataGridViewCellEventArgs e)
         {
-            int indice = 0;
+            int indice = e.RowIndex;
+
             controlador.seleccionarLlamada(indice);
+            MessageBox.Show(controlador.getLlamadaSeleccionada().getNombreCliente());
             Encuesta encuesta = controlador.getEncuestaLlamada();
             DataTable dtEncuesta = controlador.encuestasToDataTable(encuesta);
             dgEncuesta.DataSource = dtEncuesta;
+        }
+
+        private void btnImprimirCSV_Click(object sender, EventArgs e)
+        {
+            CSV c = new CSV();
+            Encuesta encuesta = controlador.getEncuestaLlamada();
+            Llamada llamada = controlador.getLlamadaSeleccionada();
+            c.imprimirCSVdeEncuesta(encuesta, llamada);
         }
     }
 }
