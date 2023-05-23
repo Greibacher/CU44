@@ -38,6 +38,7 @@ namespace CU44
             fechaInicioPer = new System.Windows.Forms.DateTimePicker();
             fechaFinPer = new System.Windows.Forms.DateTimePicker();
             btnImprimirCSV = new System.Windows.Forms.Button();
+            lbNombre = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)dgLlamadas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgEncuesta).BeginInit();
             SuspendLayout();
@@ -109,6 +110,7 @@ namespace CU44
             // 
             // btnImprimirCSV
             // 
+            btnImprimirCSV.Enabled = false;
             btnImprimirCSV.Location = new System.Drawing.Point(925, 509);
             btnImprimirCSV.Name = "btnImprimirCSV";
             btnImprimirCSV.Size = new System.Drawing.Size(112, 23);
@@ -117,12 +119,25 @@ namespace CU44
             btnImprimirCSV.UseVisualStyleBackColor = true;
             btnImprimirCSV.Click += btnImprimirCSV_Click;
             // 
+            // lbNombre
+            // 
+            lbNombre.AutoSize = true;
+            lbNombre.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbNombre.Location = new System.Drawing.Point(779, 95);
+            lbNombre.Name = "lbNombre";
+            lbNombre.Size = new System.Drawing.Size(59, 25);
+            lbNombre.TabIndex = 11;
+            lbNombre.Text = "label3";
+            lbNombre.Visible = false;
+            lbNombre.Click += label3_Click;
+            // 
             // PantallaConsultarEncuesta
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new System.Drawing.Size(1086, 544);
+            Controls.Add(lbNombre);
             Controls.Add(btnImprimirCSV);
             Controls.Add(fechaFinPer);
             Controls.Add(fechaInicioPer);
@@ -153,5 +168,6 @@ namespace CU44
         private System.Windows.Forms.DateTimePicker fechaInicioPer;
         private System.Windows.Forms.DateTimePicker fechaFinPer;
         private System.Windows.Forms.Button btnImprimirCSV;
+        private System.Windows.Forms.Label lbNombre;
     }
 }

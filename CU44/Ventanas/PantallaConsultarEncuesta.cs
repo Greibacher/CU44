@@ -11,10 +11,6 @@ namespace CU44
 {
     public partial class PantallaConsultarEncuesta : Form
     {
-        DateTime fechaInicio;
-        DateTime fechaFin;
-
-
 
         ControladorConsultarEncuesta controlador;
 
@@ -65,10 +61,14 @@ namespace CU44
             int indice = e.RowIndex;
 
             controlador.seleccionarLlamada(indice);
-            MessageBox.Show(controlador.getLlamadaSeleccionada().getNombreCliente());
+            String nombre = controlador.getLlamadaSeleccionada().getNombreCliente();
+            lbNombre.Text = "Encuestado: "+nombre;
+            lbNombre.Visible = true;
             Encuesta encuesta = controlador.getEncuestaLlamada();
             DataTable dtEncuesta = controlador.encuestasToDataTable(encuesta);
             dgEncuesta.DataSource = dtEncuesta;
+            btnImprimirCSV.Enabled = true;
+
         }
 
         private void btnImprimirCSV_Click(object sender, EventArgs e)
@@ -77,6 +77,12 @@ namespace CU44
             Encuesta encuesta = controlador.getEncuestaLlamada();
             Llamada llamada = controlador.getLlamadaSeleccionada();
             c.imprimirCSVdeEncuesta(encuesta, llamada);
+            controlador.finCU();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

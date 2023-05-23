@@ -19,6 +19,7 @@ namespace CU44.Clases_de_Entidad
             this.preguntas = new List<Pregunta>();
         }
 
+       
         public void agregarPregunta(Pregunta nuevaPregunta) 
         {
             preguntas.Add(nuevaPregunta);
