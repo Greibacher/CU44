@@ -39,6 +39,11 @@ namespace CU44.Clases_de_Entidad
             return fechaFinVigencia;
         }
 
+        public string getDescripcion()
+        {
+            return descripcion;
+        }
+
         public string armarEncuesta() 
         {
             return "a"; //no supe como implementarlo
